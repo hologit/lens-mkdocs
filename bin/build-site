@@ -1,5 +1,11 @@
 #!/bin/bash -e
 
+if [ -n "${HOLOLENS_MKDOCS_VERSION}" ]; then
+    mkdocs="mkdocs==${HOLOLENS_MKDOCS_VERSION}"
+else
+    mkdocs="mkdocs"
+fi
+
 echo "executing pip and mkdocs in a subshell"
 (
     # mask lens git env from pip
@@ -11,7 +17,7 @@ echo "executing pip and mkdocs in a subshell"
     source "./.venv/bin/activate"
 
     pip install --upgrade pip
-    pip install mkdocs ${HOLOLENS_REQUIREMENTS//,/ }
+    pip install ${mkdocs} ${HOLOLENS_REQUIREMENTS//,/ }
 
     mkdocs build
 )
