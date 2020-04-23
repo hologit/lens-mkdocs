@@ -1,13 +1,14 @@
 pkg_name=lens-mkdocs
 pkg_origin=holo
-pkg_version="1.1"
+pkg_version="1.0"
 pkg_maintainer="Chris Alfano <chris@jarv.us>"
 pkg_license=("MIT")
 
 pkg_deps=(
   core/bash
+  core/gcc
+  core/python
   jarvus/hologit
-  "jarvus/mkdocs/${pkg_version}"
 )
 
 pkg_bin_dirs=(bin)

@@ -1,3 +1,17 @@
 #!/bin/bash -e
 
-mkdocs build
+echo "executing pip and mkdocs in a subshell"
+(
+    # mask lens git env from pip
+    unset -v GIT_DIR;
+    unset -v GIT_WORK_TREE;
+    unset -v GIT_INDEX_FILE;
+
+    python -m venv "./.venv"
+    source "./.venv/bin/activate"
+
+    pip install --upgrade pip
+    pip install mkdocs ${HOLOLENS_REQUIREMENTS//,/ }
+
+    mkdocs build
+)
