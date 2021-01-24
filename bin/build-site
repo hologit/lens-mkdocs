@@ -6,6 +6,19 @@ else
     mkdocs="mkdocs"
 fi
 
+
+shopt -s nullglob
+config_overrides=(mkdocs.*.yml)
+if [ ${#config_overrides[@]} -ne 0 ]; then
+    echo "$( IFS=' '; echo "merging mkdocs.yml overrides: ${config_overrides[*]}")"
+
+    # shellcheck disable=SC2086
+    if yaml-merge mkdocs.yml ${config_overrides[*]} > mkdocs-merged.yml && [ -f mkdocs-merged.yml ]; then
+        mv -v mkdocs-merged.yml mkdocs.yml
+    fi
+fi
+
+
 echo "executing pip and mkdocs in a subshell"
 (
     # mask lens git env from pip

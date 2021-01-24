@@ -9,6 +9,7 @@ pkg_deps=(
   core/gcc
   core/python
   jarvus/hologit
+  jarvus/yaml-merge
 )
 
 pkg_bin_dirs=(bin)
