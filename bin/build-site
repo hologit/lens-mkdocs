@@ -19,6 +19,9 @@ if [ ${#config_overrides[@]} -ne 0 ]; then
 fi
 
 
+mkdocs_args=("-d$(pwd)/.mkdocs-build")
+
+
 echo "executing pip and mkdocs in a subshell"
 (
     # mask lens git env from pip
@@ -32,5 +35,5 @@ echo "executing pip and mkdocs in a subshell"
     pip install --upgrade pip
     pip install ${mkdocs} ${HOLOLENS_REQUIREMENTS//,/ }
 
-    mkdocs build
+    mkdocs build "${mkdocs_args[@]}"
 )

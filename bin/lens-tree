@@ -22,9 +22,9 @@ INPUT_TREE="${1?<input> required}"
   echo -e "\nmkdocs build completed successfully"
 
   # add output to git index
-  git add -f "site"
+  git add -f ".mkdocs-build"
 
 } 1>&2
 
 # output tree hash
-git write-tree --prefix="site"
+git write-tree --prefix=".mkdocs-build"
