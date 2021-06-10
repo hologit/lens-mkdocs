@@ -20,6 +20,9 @@ fi
 
 
 mkdocs_args=("-d$(pwd)/.mkdocs-build")
+if [ -n "${HOLOLENS_MKDOCS_CONFIG}" ]; then
+    mkdocs_args+=("-f ${HOLOLENS_MKDOCS_CONFIG}")
+fi
 
 
 echo "executing pip and mkdocs in a subshell"
