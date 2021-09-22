@@ -1,6 +1,6 @@
 pkg_name=lens-mkdocs
 pkg_origin=holo
-pkg_version="1.1"
+pkg_version="1.2"
 pkg_maintainer="Chris Alfano <chris@jarv.us>"
 pkg_license=("MIT")
 
