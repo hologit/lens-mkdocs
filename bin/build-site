@@ -30,7 +30,11 @@ echo "executing pip and mkdocs in a subshell"
     source "./.venv/bin/activate"
 
     pip install --upgrade pip
-    pip install ${mkdocs} ${HOLOLENS_REQUIREMENTS//,/ }
+    if [ -n "${HOLOLENS_REQUIREMENTS}" ]; then
+        pip install ${mkdocs} ${HOLOLENS_REQUIREMENTS//,/ }
+    else
+        pip install -r requirements.txt
+    fi
 
     mkdocs build
 )
